@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Come To My Party!{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+
+    <div class="col-11">
+      <h2>Welcome</h2>
+
+      <p>I'm having a party! I'd love for you to come!</p>
+
+      <h2>Party Info</h2>
+
+      <p>We'll have board games, karaoke, food, a mini-swimming pool.</p>
+
+      <p>
+        Since so many of my friends are awesome software developers, we'll have
+        a mini-Hackathon with fantastic prize!
+      </p>
+    </div>
+    <div class="col-1">
+      <img src="/static/img/cupcake.png" align="right" alt="Cupcake">
+    </div>
+    <div class="row">
+      {% if session['rsvp'] %}
+        <h2>Party Details</h2>
+        <address>
+          123 Magic Unicorn Way<br>
+          San Francisco, CA
+        </address>
+
+        <h2>Treats</h2>
+        <p>
+          My friends are terrific at bringing food!
+          <a href="/treats">See what they're bringing.</a>
+        </p>
+
+      {% else %}
+
+        <h2>Please RSVP</h2>
+
+        <form method="POST" action="/rsvp">
+          <div class="form-group">
+            <label for="field-name">Name</label>
+            <input id="field-name" class="form-control" type="text" name="name">
+          </div>
+          <div class="form-group">
+            <label for="field-email">Email</label>
+            <input id="field-email" class="form-control" type="text" name="email">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Oooh! I want to come!" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

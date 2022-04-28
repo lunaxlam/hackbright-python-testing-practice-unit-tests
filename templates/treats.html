@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Yummy!{% endblock %}
+
+{% block content %}
+
+  <h2>Treats</h2>
+  <table class="table">
+    <thead>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Who</th>
+    </thead>
+    <tbody>
+    {% for treat in treats %}
+      <tr>
+        <td>{{ treat['type'] }}</td>
+        <td>{{ treat['description'] }}</td>
+        <td>{{ treat['who'] }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <p>We have so many {{ most }}s already. Can you bring a {{ least }}?</p>
+
+{% endblock %}
